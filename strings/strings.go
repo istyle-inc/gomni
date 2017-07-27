@@ -47,8 +47,8 @@ func BuildSHA512String(src ...interface{}) (string, error) {
 // src ...interface{} parameters for combining
 func Combine(sep string, src ...interface{}) (str string, err error) {
 	arr := make([]string, len(src))
-	for i := range src {
-		arr[i], err = ToString(src[i])
+	for i, v := range src {
+		arr[i], err = ToString(v)
 		if err != nil {
 			return "", err
 		}
@@ -82,8 +82,8 @@ func ToString(src interface{}) (string, error) {
 			return gostr.GoString(), nil
 		}
 		log.Println("Couldn't find any types to be convertable to string : ", st)
+		return "", ErrUnConvertableInterface
 	}
-	return "", ErrUnConvertableInterface
 }
 
 // HasEmpty 引数として与えられたstringが全て空でないかチェックする

@@ -168,10 +168,15 @@ func TestToString(t *testing.T) {
 }
 
 // testStringer Stringer implemented
-type testStringer struct{}
+type testStringer struct {
+	S *string
+}
 
 // String Stringer.String()
 func (t *testStringer) String() string {
+	if t.S != nil {
+		return *t.S
+	}
 	return "test-stringer"
 }
 

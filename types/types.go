@@ -1,6 +1,9 @@
 package types
 
-import "time"
+import (
+	"reflect"
+	"time"
+)
 
 // StringToPtr return string pointer
 func StringToPtr(s string) *string {
@@ -50,4 +53,12 @@ func Float32ToPtr(f float32) *float32 {
 // Float64ToPtr return float64 pointer
 func Float64ToPtr(f float64) *float64 {
 	return &f
+}
+
+// DereferenceIfPtr return dereference when v is interface
+func DereferenceIfPtr(v interface{}) interface{} {
+	if reflect.TypeOf(v).Kind() == reflect.Ptr {
+		return reflect.ValueOf(v).Elem().Interface()
+	}
+	return v
 }

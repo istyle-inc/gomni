@@ -55,6 +55,14 @@ func Float64ToPtr(f float64) *float64 {
 	return &f
 }
 
+// NVL return sub when s is nil
+func NVL(s interface{}, sub interface{}) interface{} {
+	if reflect.ValueOf(s).IsNil() {
+		return sub
+	}
+	return DereferenceIfPtr(s)
+}
+
 // DereferenceIfPtr return dereference when v is interface
 func DereferenceIfPtr(v interface{}) interface{} {
 	if reflect.TypeOf(v).Kind() == reflect.Ptr {

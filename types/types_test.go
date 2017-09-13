@@ -94,3 +94,62 @@ func TestFloat64ToPtr(t *testing.T) {
 		t.Errorf("Pointer has pointed wrong value expected %v, actually %v", value, *ptr)
 	}
 }
+
+// TestNVL Test for NVL
+func TestNVL(t *testing.T) {
+	type args struct {
+		s   interface{}
+		sub interface{}
+	}
+	var nili *interface{}
+	testees := []struct {
+		name string
+		args args
+		want interface{}
+	}{
+		// Success: returning sub when s is nil interface
+		{
+			name: "success to returning-sub",
+			args: args{s: nili, sub: 10},
+			want: 10,
+		},
+		// Success：returning s when s is not nil interface
+		{
+			name: "success to returning-s",
+			args: args{s: IntToPtr(2), sub: 10},
+			want: 2,
+		},
+	}
+	for _, tt := range testees {
+		if got := NVL(tt.args.s, tt.args.sub); got != tt.want {
+			t.Errorf("%q. NVL() = %v, want %v", tt.name, got, tt.want)
+		}
+	}
+}
+
+func TestDereferenceIfPtr(t *testing.T) {
+	testees := []struct {
+		name string
+		args interface{}
+		want interface{}
+	}{
+		// Success: returning dereference when v is pointer
+		{
+			name: "success to returning dereference value",
+			args: IntToPtr(10),
+			want: 10,
+		},
+		// Success：returning v when v is not pointer
+		{
+			name: "success to returning v",
+			args: 2,
+			want: 2,
+		},
+	}
+	for _, tt := range testees {
+		if got := DereferenceIfPtr(tt.args); got != tt.want {
+			t.Errorf("%q. DereferenceIfPtr() = %v, want %v", tt.name, got, tt.want)
+		}
+	}
+
+}

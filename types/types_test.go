@@ -77,7 +77,7 @@ func TestInt64ToPtr(t *testing.T) {
 	}
 }
 
-// TestFloat32ToPtr Float32ToPtrのテスト
+// TestFloat32ToPtr Test for Float32ToPtr
 func TestFloat32ToPtr(t *testing.T) {
 	var value float32 = 6.413241
 	ptr := Float32ToPtr(value)
@@ -86,7 +86,7 @@ func TestFloat32ToPtr(t *testing.T) {
 	}
 }
 
-// TestFloat64ToPtr Float64ToPtrのテスト
+// TestFloat64ToPtr Test for Float64ToPtr
 func TestFloat64ToPtr(t *testing.T) {
 	value := 6.413241
 	ptr := Float64ToPtr(value)

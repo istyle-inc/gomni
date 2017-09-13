@@ -1,7 +1,7 @@
 package float64
 
 import (
-	"gomni/types"
+	"github.com/istyle-inc/gomni/types"
 	"testing"
 )
 

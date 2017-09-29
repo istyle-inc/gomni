@@ -95,6 +95,51 @@ func TestFloat64ToPtr(t *testing.T) {
 	}
 }
 
+// TestUintToPtr Test for UintToPtr
+func TestUintToPtr(t *testing.T) {
+	value := uint(1)
+	ptr := UintToPtr(value)
+	if *ptr != value {
+		t.Errorf("Pointer has pointed wrong value expected %v, actually %v", value, *ptr)
+	}
+}
+
+// TestUint8ToPtr Test for Uint8ToPtr
+func TestUint8ToPtr(t *testing.T) {
+	value := uint8(1)
+	ptr := Uint8ToPtr(value)
+	if *ptr != value {
+		t.Errorf("Pointer has pointed wrong value expected %v, actually %v", value, *ptr)
+	}
+}
+
+// TestUint16ToPtr Test for Uint16ToPtr
+func TestUint16ToPtr(t *testing.T) {
+	value := uint16(1)
+	ptr := Uint16ToPtr(value)
+	if *ptr != value {
+		t.Errorf("Pointer has pointed wrong value expected %v, actually %v", value, *ptr)
+	}
+}
+
+// TestUint32ToPtr Test for Uint32ToPtr
+func TestUint32ToPtr(t *testing.T) {
+	value := uint32(1)
+	ptr := Uint32ToPtr(value)
+	if *ptr != value {
+		t.Errorf("Pointer has pointed wrong value expected %v, actually %v", value, *ptr)
+	}
+}
+
+// TestUint64ToPtr Test for Uint64ToPtr
+func TestUint64ToPtr(t *testing.T) {
+	value := uint64(1)
+	ptr := Uint64ToPtr(value)
+	if *ptr != value {
+		t.Errorf("Pointer has pointed wrong value expected %v, actually %v", value, *ptr)
+	}
+}
+
 // TestNVL Test for NVL
 func TestNVL(t *testing.T) {
 	type args struct {

@@ -55,6 +55,31 @@ func Float64ToPtr(f float64) *float64 {
 	return &f
 }
 
+// UintToPtr return uint pointer
+func UintToPtr(i uint) *uint {
+	return &i
+}
+
+// Uint8ToPtr return uint8 pointer
+func Uint8ToPtr(i uint8) *uint8 {
+	return &i
+}
+
+// Uint16ToPtr return uint16 pointer
+func Uint16ToPtr(i uint16) *uint16 {
+	return &i
+}
+
+// Uint32ToPtr return uint32 pointer
+func Uint32ToPtr(i uint32) *uint32 {
+	return &i
+}
+
+// Uint64ToPtr return uint64 pointer
+func Uint64ToPtr(i uint64) *uint64 {
+	return &i
+}
+
 // NVL return sub when s is nil
 func NVL(s interface{}, sub interface{}) interface{} {
 	if reflect.ValueOf(s).IsNil() {

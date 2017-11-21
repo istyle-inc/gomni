@@ -7,6 +7,7 @@ import (
 	"log"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 
 	"golang.org/x/crypto/sha3"
 )
@@ -94,4 +95,12 @@ func HasEmpty(target ...string) bool {
 		}
 	}
 	return false
+}
+
+// Strimwidth 文字数を丸め込み指定文字を追加して返す
+func Strimwidth(s string, length int, mark string) string {
+	if utf8.RuneCountInString(s) > length {
+		return string([]rune(s)[:(length-utf8.RuneCountInString(mark))]) + mark
+	}
+	return s
 }

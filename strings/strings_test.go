@@ -26,6 +26,26 @@ func TestNVL(t *testing.T) {
 
 }
 
+func TestStrimwidth(t *testing.T) {
+	s := "テストtest 文字列" // 11文字
+	var expected string
+
+	// 与えられた文字列が指定された文字数以下ならそのまま返却
+	expected = "テストtest 文字列"
+	if testee := Strimwidth(s, 20, "…"); testee != expected {
+		t.Errorf("Strimwidth returned %s not %s", testee, expected)
+	}
+	if testee := Strimwidth(s, 11, "…"); testee != expected {
+		t.Errorf("Strimwidth returned %s not %s", testee, expected)
+	}
+
+	// 与えられた文字列が指定された文字数より大きければ省略記号を付与して返却
+	expected = "テストtest 文…"
+	if testee := Strimwidth(s, 10, "…"); testee != expected {
+		t.Errorf("Strimwidth returned %s not %s", testee, expected)
+	}
+}
+
 // BuildSHA256Stringテスト
 func TestBuildSHA256String(t *testing.T) {
 	// 有効な文字列以外が渡った場合ハッシュ化された文字列が返却されること

@@ -1,14 +1,31 @@
 language: go
 go:
-    - 1.7
-    - 1.8
-    - 1.9
+  - 1.7
+  - 1.8
+  - 1.9
 go_import_path: github.com/istyle-inc/gomni
 before_install:
-    - go get github.com/modocache/gover
-    - go get github.com/mattn/goveralls
-    - go get golang.org/x/tools/cmd/cover
+  - go get github.com/modocache/gover
+  - go get github.com/mattn/goveralls
+  - go get golang.org/x/tools/cmd/cover
+install:
+  - go get -v github.com/Masterminds/glide
+  - cd $GOPATH/src/github.com/Masterminds/glide && git checkout e73500c735917e39a8b782e0632418ab70250341 && go install && cd -
+  - glide install
 script:
-    - go test -coverprofile=goacors.coverprofile
-    - $HOME/gopath/bin/gover
-    - $HOME/gopath/bin/goveralls -coverprofile=gover.coverprofile -service=travis-ci
+  - go test -v -covermode=count -coverprofile=numerics_float32.cover.coverprofile github.com/istyle-inc/gomni/numerics/float32
+  - go test -v -covermode=count -coverprofile=numerics_float64.cover.coverprofile github.com/istyle-inc/gomni/numerics/float64
+  - go test -v -covermode=count -coverprofile=numerics_int.cover.coverprofile github.com/istyle-inc/gomni/numerics/int
+  - go test -v -covermode=count -coverprofile=numerics_int16.cover.coverprofile github.com/istyle-inc/gomni/numerics/int16
+  - go test -v -covermode=count -coverprofile=numerics_int32.cover.coverprofile github.com/istyle-inc/gomni/numerics/int32
+  - go test -v -covermode=count -coverprofile=numerics_int64.cover.coverprofile github.com/istyle-inc/gomni/numerics/int64
+  - go test -v -covermode=count -coverprofile=numerics_int8.cover.coverprofile github.com/istyle-inc/gomni/numerics/int8
+  - go test -v -covermode=count -coverprofile=numerics_uint16.cover.coverprofile github.com/istyle-inc/gomni/numerics/uint16
+  - go test -v -covermode=count -coverprofile=numerics_uint32.cover.coverprofile github.com/istyle-inc/gomni/numerics/uint32
+  - go test -v -covermode=count -coverprofile=numerics_uint64.cover.coverprofile github.com/istyle-inc/gomni/numerics/uint64
+  - go test -v -covermode=count -coverprofile=numerics_uint8.cover.coverprofile github.com/istyle-inc/gomni/numerics/uint8
+  - go test -v -covermode=count -coverprofile=strings.cover.coverprofile github.com/istyle-inc/gomni/strings
+  - go test -v -covermode=count -coverprofile=times.cover.coverprofile github.com/istyle-inc/gomni/times
+  - go test -v -covermode=count -coverprofile=types.cover.coverprofile github.com/istyle-inc/gomni/types
+  - $HOME/gopath/bin/gover
+  - $HOME/gopath/bin/goveralls -coverprofile=gover.coverprofile -service=travis-ci

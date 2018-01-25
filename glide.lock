@@ -1,0 +1,12 @@
+hash: 3663e937639283bdff7f5f56e2c1a1dfab939c5f475a5b00b829f8fb0a63a09e
+updated: 2018-01-25T20:41:06.148448+09:00
+imports:
+- name: golang.org/x/crypto
+  version: 3d37316aaa6bd9929127ac9a527abf408178ea7b
+  subpackages:
+  - sha3
+- name: golang.org/x/sys
+  version: ef802241c90f84d84d644a2d8d0de8ee96038c9c
+  subpackages:
+  - unix
+testImports: []

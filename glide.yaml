@@ -3,3 +3,6 @@ import:
 - package: golang.org/x/crypto
   subpackages:
   - sha3
+- package: golang.org/x/sys
+  subpackages:
+  - unix
